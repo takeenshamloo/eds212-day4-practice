@@ -1,0 +1,42 @@
+---
+title: "r-data-exploration"
+author: "Takeen Shamloo"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+## Data exploration using common R functions
+```{r}
+library(tidyverse)
+library(skimr)
+library(GGally)
+
+view(diamonds)
+
+names(diamonds)
+
+dim(diamonds)
+
+summary(diamonds)
+
+head(diamonds)
+
+tail(diamonds)
+
+skimr::skim(diamonds)
+```
+
+# Create a plot for our dataset ----
+
+```{r}
+# Chose columns carat cut color and clarity----
+GGally::ggpairs(diamonds, columns = 1:4) # ggpairs plot
+
+# ggplot scatterplot
+ggplot(diamonds, aes(x = carat, y = price, color = cut)) + geom_point()
+
+# ggplot histogram
+ggplot(diamonds, aes(x = carat, color = cut)) + geom_histogram()
+
+```
